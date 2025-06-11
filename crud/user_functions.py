@@ -55,3 +55,36 @@ def rent_book(user_id):
     execute_query("UPDATE books SET available_count=available_count-1 WHERE id=%s",(book_id,))
     for row in existing:
         print(f"you have successfully rented this book.")
+
+def return_book(user_id):
+    query = """SELECT b.id, b.title, br.id as borrow_id 
+                FROM books b JOIN borrows br ON b.id=br.book_id
+                WHERE br.user_id=%s AND br.returned_at IS NULL;"""
+    params = (user_id,)
+    books = execute_query(query, params,"all")
+    if not books:
+        print("book not available .")
+        return
+    for book in books:
+        print(f"{book[0]}.{book[1]} is borrowed.")
+
+    book_id = int(input("Enter book id you want to return: "))
+
+    borrow_id = None
+    for book in books:
+        if book[0] == book_id:
+            borrow_id = book[2]
+            break
+
+    if not borrow_id:
+        print("wrong book id.")
+        return
+
+    update_borrow = """UPDATE borrows SET returned_at=%s WHERE id=%s;"""
+    borrow_params = (datetime.now(), borrow_id)
+    execute_query(update_borrow, borrow_params)
+
+    execute_query("UPDATE books SET available_count=available_count+1 WHERE id=%s",
+                  (book_id,)
+    )
+    print("you have successfully returned this book.")
