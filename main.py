@@ -1,7 +1,9 @@
 from core.table_quiries import initialize_tables
 from crud.login import register, login
 from crud.admin_functions import add_books_author , edit_books_author, delete_books
-from crud.user_functions import show_books, search_books_by_author
+from crud.user_functions import show_books, search_books_by_author, rent_book
+
+
 def auth_menu():
     print("""
     1.Register
@@ -56,7 +58,7 @@ def main_menu(user):
         elif choice == "2":
             search_books_by_author()
         elif choice == "3":
-            pass
+            rent_book(user['id'])
         elif choice == "4":
             pass
         elif choice == "5":

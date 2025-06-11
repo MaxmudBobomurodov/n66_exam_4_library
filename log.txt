@@ -4,78 +4,41 @@ INFO:core.database_settings:Successfully executed
 INFO:core.database_settings:Successfully executed
 INFO:core.database_settings:Successfully executed
 INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
-INFO:core.database_settings:Successfully executed
+ERROR:core.database_settings:Transaction failed
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\Library_n66_exam4\core\database_settings.py", line 60, in execute_query
+    db.execute(query=query, params=params)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\PycharmProjects\Library_n66_exam4\core\database_settings.py", line 38, in execute
+    self.cursor.execute(query, params)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\user\PycharmProjects\Library_n66_exam4\.venv\Lib\site-packages\psycopg2\extras.py", line 146, in execute
+    return super().execute(query, vars)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.DatatypeMismatch: column "borrowed_at" is of type timestamp without time zone but expression is of type numeric
+LINE 1: ...ows (user_id, book_id, borrowed_at) VALUES (1, 2, 1749679142...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.
+
+ERROR:core.database_settings:Error while executing the query column "borrowed_at" is of type timestamp without time zone but expression is of type numeric
+LINE 1: ...ows (user_id, book_id, borrowed_at) VALUES (1, 2, 1749679142...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.
+Traceback (most recent call last):
+  File "C:\Users\user\PycharmProjects\Library_n66_exam4\core\database_settings.py", line 60, in execute_query
+    db.execute(query=query, params=params)
+    ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\PycharmProjects\Library_n66_exam4\core\database_settings.py", line 38, in execute
+    self.cursor.execute(query, params)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "C:\Users\user\PycharmProjects\Library_n66_exam4\.venv\Lib\site-packages\psycopg2\extras.py", line 146, in execute
+    return super().execute(query, vars)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+psycopg2.errors.DatatypeMismatch: column "borrowed_at" is of type timestamp without time zone but expression is of type numeric
+LINE 1: ...ows (user_id, book_id, borrowed_at) VALUES (1, 2, 1749679142...
+                                                             ^
+HINT:  You will need to rewrite or cast the expression.
+
 INFO:core.database_settings:Successfully executed
 INFO:core.database_settings:Successfully executed
 INFO:core.database_settings:Successfully executed
