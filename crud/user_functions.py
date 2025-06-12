@@ -88,3 +88,16 @@ def return_book(user_id):
                   (book_id,)
     )
     print("you have successfully returned this book.")
+
+def view_rented_books(user_id):
+    query = """select b.id, b.title from borrows br join books b on br.book_id=b.id where user_id=%s AND returned_at IS NULL;
+"""
+    params = (user_id,)
+    books = execute_query(query, params,fetch="all")
+    if not books:
+        print("books not available .")
+        return
+
+
+    for book in books:
+        print(f"{book[0]}.{book[1]} is rented.")
