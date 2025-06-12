@@ -1,7 +1,6 @@
 from core.database_settings import execute_query
 from datetime import datetime
 def show_books():
-
     query = """SELECT b.id , b.title, a.full_name as author, b.puplished_at, b.total_count, b.available_count
                 FROM books b join authors a on b.author_id=a.id;
 """
@@ -28,6 +27,7 @@ def search_books_by_author():
     where a.full_name=%s;"""
     params = (author_name,)
     books = execute_query(query, params, "all")
+
     if not books:
         print("books not available .")
         return
@@ -45,9 +45,11 @@ def search_books_by_author():
 def rent_book(user_id):
     book_id = int(input("Enter book id: "))
     existing = execute_query(f"SELECT id FROM books WHERE id=%s AND available_count>0",(book_id,) ,fetch="one")
+
     if not existing:
         print("book not available .")
         return
+
     query = """INSERT INTO borrows (user_id, book_id, borrowed_at) VALUES (%s, %s, %s);"""
     params = (user_id , book_id, datetime.now())
     execute_query(query, params)
@@ -60,8 +62,10 @@ def return_book(user_id):
     query = """SELECT b.id, b.title, br.id as borrow_id 
                 FROM books b JOIN borrows br ON b.id=br.book_id
                 WHERE br.user_id=%s AND br.returned_at IS NULL;"""
+
     params = (user_id,)
     books = execute_query(query, params,"all")
+
     if not books:
         print("book not available .")
         return
@@ -90,7 +94,9 @@ def return_book(user_id):
     print("you have successfully returned this book.")
 
 def view_rented_books(user_id):
-    query = """select b.id, b.title from borrows br join books b on br.book_id=b.id where user_id=%s AND returned_at IS NULL;
+    query = """select b.id, b.title from borrows br 
+                join books b on br.book_id=b.id
+                where user_id=%s AND returned_at IS NULL;
 """
     params = (user_id,)
     books = execute_query(query, params,fetch="all")

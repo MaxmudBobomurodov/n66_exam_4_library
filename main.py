@@ -28,17 +28,24 @@ def main_menu(user):
     if is_admin:
         print("""
         ADMIN MENU:
-        1.Add new book and author
-        2.Editing books
-        3.Delete books
+        1.show books
+        2.Add new book and author
+        3.Editing books
+        4.Delete books
+        5.Exit
         """)
         choice = input("Enter your choice: ")
         if choice == "1":
-            add_books_author()
+            show_books()
         elif choice == "2":
-            edit_books_author()
+            add_books_author()
         elif choice == "3":
+            edit_books_author()
+        elif choice == "4":
             delete_books()
+        elif choice == "5":
+            print("exit")
+            return
         else:
             print("Invalid choice")
         main_menu(user)

@@ -47,21 +47,27 @@ def edit_books_author():
         params = (author_name, author_id)
         execute_query(query, params)
         print("Successfully changed author name.")
+
     elif choice == "2":
         new_title = input("Enter new book title: ")
         query = "UPDATE books SET title = %s WHERE id = %s;"
         params = (new_title, book_id)
         execute_query(query, params)
         print("Successfully changed book title.")
+
+
     elif choice == "3":
         new_published_at = input("Enter published date (yyyy-mm-dd): ")
         query = "UPDATE books SET puplished_at = %s WHERE id = %s;"
         params = (new_published_at, book_id)
         execute_query(query, params)
         print("Successfully changed published date.")
+
+
     elif choice == "4":
         new_total_count = input("Enter new total count of books: ")
         available_count = execute_query("SELECT available_count FROM books WHERE id = %s", (book_id,), fetch='one')
+
         if int(new_total_count) > int(available_count['available_count']):
             query = "UPDATE books SET total_count = %s WHERE id = %s;"
             params = (new_total_count, book_id)
@@ -71,9 +77,12 @@ def edit_books_author():
             print("You cannot change total count if it is smaller than available count.")
             return
 
+
     elif choice == "5":
         new_available_count = input("Enter new available count of books: ")
         total_count = execute_query("SELECT total_count FROM books WHERE id = %s", (book_id,), fetch='one')
+
+
         if int(new_available_count) < int(total_count['total_count']):
             query = "UPDATE books SET available_count = %s WHERE id = %s;"
             params = (new_available_count, book_id)
@@ -82,9 +91,13 @@ def edit_books_author():
         else:
             print("You cannot change available count if it is bigger than total count.")
             return
+
+
     elif choice == "6":
         print("exit")
         return
+
+
 def delete_books():
     book_id = int(input("Enter book id: "))
     query = "DELETE FROM books WHERE id = %s;"
