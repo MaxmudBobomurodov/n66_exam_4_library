@@ -105,5 +105,11 @@ def delete_books():
     execute_query(query, params)
     print("Successfully deleted books.")
 
-
-
+def show_users():
+    query = "SELECT * FROM users;"
+    users = execute_query(query, fetch='all')
+    if not users:
+        print("Users not available.")
+        return
+    for user in users:
+        print(f"ID:{user[0]}|Name:{user[1]} |Username: {user[2]}")

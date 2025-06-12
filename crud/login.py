@@ -19,7 +19,7 @@ def register():
 
     query = "INSERT INTO users (full_name, username, password) VALUES (%s, %s, %s)"
     execute_query(query, (full_name, username, password))
-    print("Registered successfully!")
+    print("Registered successfully! Please login again.")
 
 def login():
     username = input("Enter your username: ").strip()
